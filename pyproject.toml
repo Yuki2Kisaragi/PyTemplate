@@ -1,0 +1,93 @@
+[project]
+name = "pytemplate"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "ruff>=0.8.0",
+    "mypy>=1.13.0",
+    "pytest>=8.3.3",
+    "fastapi>=0.115.5",
+]
+
+[tool.mypy]
+# 型チェックの対象とするPythonのバージョン
+python_version = "3.12"
+
+# エラーを厳格にする
+strict = true
+
+# 無視する警告の設定
+ignore_missing_imports = true
+
+# 型情報が無い関数をチェックしない
+disallow_untyped_calls = true
+
+# `# type: ignore`が付与された箇所のmypyエラー隠蔽を許可しない
+warn_unused_ignores = true
+
+# 重複したファイル名を許可する
+explicit_package_bases = true
+# 特定のファイルやディレクトリで異なる設定を適用
+
+[tool.ruff]
+# 下記ファイルを除外する
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+]
+line-length = 120
+indent-width = 4
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "W"]
+ignore = []
+
+# `--fix`指定時に全ての有効なルールに対して修正を許可する
+fixable = ["ALL"]
+unfixable = []
+
+# アンダースコアで始まる変数名を無視する
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.lint.isort]
+# インポート文のセクションの順序を指定
+section-order = ["future", "standard-library", "third-party", "first-party", "local-folder"]
+# インポート文の末尾にカンマがある場合、次の行に分割
+split-on-trailing-comma = true
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+# リストやタプルの最後にカンマがある場合整形する
+skip-magic-trailing-comma = false
+
+# 行末を自動判別する
+line-ending = "auto"
